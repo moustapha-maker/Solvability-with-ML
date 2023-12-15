@@ -1,0 +1,172 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<div class="mt-50">
+<form action="/predict" method="POST">
+     <br/> <br/> <br/>
+     <h5>Information personnelle du client </h5>
+ <div class="row">
+     <div class="col">
+    <input type="text" class="form-control" name="nomPrenom" placeholder="Nom Et Prenom " aria-label="Nom Et Prenom">
+  </div>
+
+      <div class="col">
+    <input type="text" class="form-control" name="LIMIT_BAL"  id="LIMIT_BAL" placeholder="Montant du credi" aria-label="Montant du credi">
+  </div>
+ </div>
+    <br/> <br/>
+     <h5> Historique des paiements passés.</h5>
+    <div class="row">
+
+  <div class="col">
+    <select   class="form-control" name="PAY_9" id="PAY_9" placeholder="septembre" aria-label="septembre">
+        <option value="-1">payer dûment</option>
+        <option value="1">retard de 1</option>
+        <option value="2">retard de 2</option>
+        <option value="3">retard de 3</option>
+         <option value="4">retard de 4</option>
+        <option value="5"> retard de 5</option>
+        <option value="6">retard de 6</option>
+         <option value="7">retard de 7</option>
+        <option value="8">retard de 8</option>
+        <option value="9">retard de 9</option>
+         <option value="10">retard de 10</option>
+        <option value="11">retard de 11</option>
+        <option value="12">retard de 12</option>
+    </select>
+  </div>
+     <div class="col">
+    <select  class="form-control" name="PAY_8" id="PAY_8" placeholder="Aout" aria-label="Aout">
+         <option value="-1">payer dûment</option>
+        <option value="1">retard de 1</option>
+        <option value="2">retard de 2</option>
+        <option value="3">retard de 3</option>
+         <option value="4">retard de 4</option>
+        <option value="5"> retard de 5</option>
+        <option value="6">retard de 6</option>
+         <option value="7">retard de 7</option>
+        <option value="8">retard de 8</option>
+        <option value="9">retard de 9</option>
+         <option value="10">retard de 10</option>
+        <option value="11">retard de 11</option>
+        <option value="12">retard de 12</option>
+    </select>
+  </div>
+  <div class="col">
+    <select   class="form-control" name="PAY_7" id="PAY_7" placeholder="Juiller" aria-label="Juiller">
+         <option value="-1">payer dûment</option>
+        <option value="1">retard de 1</option>
+        <option value="2">retard de 2</option>
+        <option value="3">retard de 3</option>
+         <option value="4">retard de 4</option>
+        <option value="5"> retard de 5</option>
+        <option value="6">retard de 6</option>
+         <option value="7">retard de 7</option>
+        <option value="8">retard de 8</option>
+        <option value="9">retard de 9</option>
+         <option value="10">retard de 10</option>
+        <option value="11">retard de 11</option>
+        <option value="12">retard de 12</option>
+    </select>
+  </div>
+
+    </div>
+         <h5>Montant du paiement précédent</h5>
+     <div class="row">
+   <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT9" id="PAY_AMT9" placeholder="septembre" aria-label="septembre">
+  </div>
+     <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT8" id="PAY_AMT8" placeholder="Aout" aria-label="Aout">
+  </div>
+  <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT7" id="PAY_AMT7" placeholder="Juiller" aria-label="Juiller">
+  </div>
+     <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT6" id="PAY_AMT6" placeholder="Juin" aria-label="Juin">
+  </div>
+  <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT5" id="PAY_AMT5" placeholder="Mai" aria-label="Mai">
+  </div>
+     <div class="col">
+    <input type="number" class="form-control" name="PAY_AMT4" id ="PAY_AMT4" placeholder="Avril" aria-label="Avril">
+  </div>
+</div>
+    <br/> <br/>
+       <h5>choisir l'algorithme preferé</h5>
+<div class="row">
+
+   <div class="col form-check">
+  <input class="form-check-input" type="radio"  name="algorithme"   id="naivbase" value="navibase" >
+  <label class="form-check-label" for="naivbase">
+    Algorithme naiv base
+  </label>
+       <br/>Accuracy = {{ accNB}}
+</div>
+       <div class="col form-check">
+  <input class="form-check-input" type="radio" name="algorithme"   id="SGDClassifier" value="SGDClassifier" >
+  <label class="form-check-label" for="SGDClassifier">
+    Algorithme SGD Classifier
+  </label>
+        <br/>Accuracy = {{ accSGD}}
+</div>
+      <div class="col  form-check">
+  <input class="form-check-input" type="radio" name="algorithme"   id="dectreclas" value="dectreclas"  >
+  <label class="form-check-label" for="dectreclas">
+    DecisionTreeClassifier
+  </label>
+       <br/> Accuracy = {{ accTree}}
+</div>
+     <div class="col form-check">
+  <input class="form-check-input" type="radio" name="algorithme"   id="Logreg" value="Logreg"  >
+  <label class="form-check-label" for="Logreg">
+    Logistique regression
+  </label>
+   <br/> Accuracy = {{ accLR}}
+</div>
+</div>
+    <br>
+    <div class="row  ">
+        <div class="col" align="center">
+    <input type="submit" value="    Prédict     " class="btn btn-success btn-bg">
+         </div>
+    </div>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+  $( "#naivbase" ).click(function() {
+     $("#PAY_AMT6").hide();
+     $("#PAY_AMT4").hide();
+     $("#PAY_7").hide();
+     $("#PAY_AMT5").hide();
+     $("#PAY_8").hide();
+     $("#PAY_6").hide();
+});
+$( "#Logreg" ).click(function() {
+     $("#PAY_AMT6").show();
+     $("#PAY_AMT4").show();
+     $("#PAY_7").show();
+     $("#PAY_AMT5").show();
+     $("#PAY_8").show();
+     $("#PAY_6").show();
+});
+$( "#dectreclas"  ).click(function() {
+     $("#PAY_AMT6").show();
+     $("#PAY_AMT4").show();
+     $("#PAY_7").show();
+     $("#PAY_AMT5").show();
+     $("#PAY_8").show();
+     $("#PAY_6").show();
+});
+$("#SGDClassifier"  ).click(function() {
+     $("#PAY_AMT6").show();
+     $("#PAY_AMT4").show();
+     $("#PAY_7").show();
+     $("#PAY_AMT5").show();
+     $("#PAY_8").show();
+     $("#PAY_6").show();
+});
+
+</script>
+
+    {% endblock %}

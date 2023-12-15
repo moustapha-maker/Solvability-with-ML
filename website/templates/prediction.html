@@ -1,0 +1,22 @@
+ {% extends "base.html" %} {% block title %} Prediction {% endblock %} {% block content
+ %}
+ <div align="center" class="col mt-60 pt-60">
+  <br>
+  <br>
+<h4>les client {{client.nomprenom}}     est {%if client.solv==0%} in solvalble <br> <br> <img src='static\no.png' width="180px" height="190px">{% else %} solvable <br><br> <img src='static\oui.jpg' width="180px" height="190px"> {% endif %} </h4>
+</div>
+
+
+ <!--<h1 align="center">Notes</h1>-->
+<!--<ul class="list-group list-group-flush" id="notes">-->
+<!--  {% for enrg  in clients %}-->
+<!--  <li class="list-group-item">-->
+<!--    {{ enreg.nomprenom }}-->
+<!--    <button type="button" class="close" onClick="deleteNote({{ enreg.id }})">-->
+<!--      <span aria-hidden="true">&times;</span>-->
+<!--    </button>-->
+<!--  </li>-->
+<!--  {% endfor %}-->
+<!--</ul>-->
+
+{% endblock %}
